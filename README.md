@@ -1,10 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<center>
 
-## Getting Started
+# VelocityView ⚡
 
-First, run the development server:
+</center>
 
-```bash
+<center>
+
+**VelocityView is a high-performance API built with Hono, Next.js, and Cloudflare, designed to deliver lightning-fast query results in milliseconds.**
+
+</center>
+
+
+<center>
+
+<img src="public/overview.png" width="700" alt="Landing Page">
+
+</center>
+
+
+## 🚀 Features
+
+- **Instant Results:** Get your query results in milliseconds.
+- **Efficient:** Built with Hono, Next.js, and Cloudflare for optimal performance.
+- **Scalable:** Designed to scale with your growing demands.
+- **Easy Integration:** Simple integration into your existing projects.
+
+
+## 💻 Overview
+
+VelocityView utilizes a combination of cutting-edge technologies to ensure optimal performance and efficiency. The Key components include:
+
+- **Hono:** A high-performance JavaScript framework.
+- **Next.js:** The React framework for production, enabling server-side rendering and efficient client-side navigation.
+- **Cloudflare:** A web infrastructure and website security company, ensuring fast and secure delivery of API responses.
+- **Upstash:** A popular Redis database for storing and querying data.
+
+
+## 🔗 Make a Query  (Click on this link):
+
+```
+https://performantapi.performantapi.workers.dev/api/search?q=<country_name>
+```
+
+## ➡️ Usage
+
+1. **Send a Query:** Make a GET request to the API endpoint with your query.
+```
+GET /query?q=<country_name>
+```
+2. **Get Results:** Receive your query results instantly.
+
+```
+{
+    "results": [
+        // Your query results here
+    ],
+    "duration": <response_time_in_milliseconds>
+}
+```
+
+## 📝 Installation
+
+1. **Clone the Repository:** Clone the VelocityView repository to your local machine.
+
+```
+git clone https://github.com/AbhiiVops/NimbusAPI.git
+```
+
+2. **Install Dependencies:** Navigate to the project directory and install the required dependencies.
+
+```
+cd velocityview
+```
+```
+npm install
+```
+3. **Start the Server:** Start the server to run the VelocityView API locally.
+
+```
 npm run dev
 # or
 yarn dev
@@ -14,30 +87,51 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📂 Files Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Page.tsx:** The main component responsible for handling user input, querying the API, and displaying results.
+- **route.ts:** Defines the API routes and implements query handling logic using Hono.
+- **Command.tsx:** UI component for rendering search input and displaying query results.
+- **Seed.ts:** Seeds the Redis database with a list of countries to optimize search performance.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## ✅ Comparsion of average of 10 search queries with Sqlite, Postgres, and Redis
 
-## Learn More
+<img src="public/comparison.png" width="700" alt="Comparison">
 
-To learn more about Next.js, take a look at the following resources:
+In the above image, we can see the comparison of average of 10 search queries with Sqlite, Postgres, and Redis. We can see that Redis is the fastest among all. It is because Redis is an in-memory data structure store, used as a database, cache, and message broker. It is very fast and efficient. It is also scalable and can be used in multiple regions. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Conventional API Queries
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<img src="public/conventionalapi.png" width="700" alt="Conventional API">
 
-## Deploy on Vercel
+In conventional API, we had a user and when user makes an API Requests it does not directly hit the database. It firstly goes through some intermediate layer such as cloud functions. Then it hits the database. The database then returns the data to the cloud function. The cloud function then returns the data to the user.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+*This is inefficient. We can optimize it. We can use Redis for this.*
 
 
-https://console.upstash.com/redis/684c4b42-9ab5-4aa7-a642-a8bbc0c8fc35?tab=details
-https://gist.github.com/incredimike/1469814
-https://www.npmjs.com/package/hono
-https://www.npmjs.com/package/wrangler
-https://www.cloudflare.com/
+
+## 📝 High Performance API Queries (VelocityView)
+
+<img src="public/performanceapi.png" width="700" alt="performance API">
+
+In Performance API, we have the same structure as the conventional API, but here we create replica of the database in every region near to the user. So, when the user makes an API Request, it directly hits the database in the region near to the user. This is efficient as it reduces the latency and increases the speed of the API.
+
+Here we use *Redis for this. Also we are using cloudfare as a CDN and upstash as a database.*
+
+
+## 📚 Resources
+
+- [Hono Documentation](https://hono.dev/docs)
+- [Hono Documentation](https://hono.dev/docs)
+- [GitHub Gist](https://gist.github.com/incredimike/1469814)
+- [NPM Package: Hono](https://www.npmjs.com/package/hono)
+- [NPM Package: Wrangler](https://www.npmjs.com/package/wrangler)
+- [Cloudflare](https://www.cloudflare.com/)
+
+## 📝 Conclusions
+
+- **VelocityView is a high-performance API built with Hono, Next.js, and Cloudflare, designed to deliver lightning-fast query results in milliseconds.**
+- **The key components of VelocityView include: Hono, Next.js, Cloudflare, and Upstash.**
+- **The API is designed to be scalable, efficient, and easy to use.**
+
+
